@@ -1,0 +1,53 @@
+.main {
+  min-height: 100vh;
+}
+
+.editor {
+  @extend .main;
+  margin-top: 20px;
+}
+
+.draft {
+  &-wrapper-class {
+    padding: 1rem;
+    border: 1px solid #ccc;
+    height: 500px;
+  }
+  &-editor-class {
+    background-color:lightgray;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    max-height: 25rem;
+    overflow-y: scroll;
+  }
+  &-toolbar-class {
+    border: 1px solid #ccc;
+  }
+  
+  &-preview {
+    padding: 1rem;
+    margin-top: 1rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .footer {
+    padding: 0 15px 40px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  
+  .footer {
+    padding: 0 15px 40px;
+  }
+
+  .draft {
+    &-editor-class {
+      max-height: 14rem;
+      overflow-y: scroll;
+    }
+  }
+
+
+}
