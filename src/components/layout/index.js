@@ -1,18 +1,18 @@
 import { Route, Switch } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
+import Homepage from "../../pages/homepage";
+import Detail from "../../pages/blogs";
 import EditorPage from "../../pages/editor";
-import mainRoutes from "../../routes";
 
 function Layout() {
   return (
     <>
       <Header />
+      <Route path="/editor" component={EditorPage} exact={true} />
       <Switch>
-        {mainRoutes.map((item, index) => (
-          <Route key={index} path={item.path} component={item.component} exact={item.exact} />
-        ))}
-        <Route path="/editor" component={EditorPage} exact={true} />
+        <Route path="/" component={Homepage} exact={true} />
+        <Route path="/blog-detail/:blog_slug" component={Detail} exact={true} />
       </Switch>
       <Footer />
     </>

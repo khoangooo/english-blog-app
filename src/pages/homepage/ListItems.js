@@ -1,9 +1,8 @@
-import { useState} from "react";
+import { useState } from "react";
 import Item from "./Item";
 import { makeStyles } from "@material-ui/core/styles";
 import { Grid } from "@material-ui/core";
 import Pagination from "@material-ui/lab/Pagination";
-import { useQuery } from "../../hooks";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -22,14 +21,10 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-function ListItems() {
+function ListItems(props) {
   const classes = useStyles();
-  const [paginationCS, setPaginationCS] = useState({
-    perPage: 9,
-    pageNumber: 1,
-  });
 
-  const { data, loading, errMessage, hasMore, pagination } = useQuery({ ...paginationCS });
+  const { data, loading, errMessage, hasMore, pagination, setPageNumber } = props;
 
   const newPagination = {
     count: Math.ceil(pagination.total / pagination.per_page) || 0,
@@ -37,7 +32,7 @@ function ListItems() {
   };
 
   const handleChangePagination = (event, value) => {
-    setPaginationCS({ ...paginationCS, pageNumber: value });
+    setPageNumber(value);
   };
 
   return loading ? (

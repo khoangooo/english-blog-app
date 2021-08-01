@@ -15,11 +15,27 @@ import MuiAlert from "@material-ui/lab/Alert";
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 250,
+    width: 250,
+    wordWrap: "break-word",
   },
   text: {
     textDecoration: "none",
     color: "#000",
+  },
+  title: {
+    height: 65,
+    overflow: "hidden",
+  },
+  btn: {
+    "&:hover": {
+      backgroundColor: "#17A974",
+    },
+  },
+  activeBtn: {
+    backgroundColor: "#17A974",
+    "&:hover": {
+      backgroundColor: "#17A974",
+    },
   },
 });
 
@@ -32,6 +48,7 @@ function Item(props) {
   const classes = useStyles();
   const [copied, setCopied] = useState(false);
   const [openAlert, setOpenAlert] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
 
   const copyUrl = () => {
     const el = document.createElement("input");
@@ -49,6 +66,11 @@ function Item(props) {
       return;
     }
     setOpenAlert(false);
+  };
+
+  const handleCopy = () => {
+    copyUrl();
+    setIsClicked(true);
   };
 
   return (
@@ -69,19 +91,26 @@ function Item(props) {
             <CardMedia
               component="img"
               alt="Contemplative Reptile"
-              height="140"
-              image="/static/images/cards/contemplative-reptile.jpg"
+              height="200"
+              src="https://dangkyduhoc.vn/wp-content/uploads/2021/04/52351011-english-british-england-language-education-concept.jpg"
               title="Contemplative Reptile"
             />
             <CardContent>
-              <Typography gutterBottom variant="h5" component="h2">
+              <Typography className={classes.title} gutterBottom variant="h5" component="h2">
                 {item.title}
               </Typography>
             </CardContent>
           </CardActionArea>
         </Link>
         <CardActions>
-          <Button variant="contained" color="primary" size="small" fullWidth onClick={copyUrl}>
+          <Button
+            className={isClicked ? classes.activeBtn : classes.btn}
+            variant="contained"
+            color="primary"
+            size="small"
+            fullWidth
+            onClick={handleCopy}
+          >
             {copied ? "Copied" : "Copy URL"}
           </Button>
         </CardActions>

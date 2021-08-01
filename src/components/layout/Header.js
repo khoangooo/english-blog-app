@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import { alpha, makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import { AppBar, Toolbar, IconButton, Typography } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import Sidebar from "./Sidebar";
-import SearchBar from "./SearchBar";
 import { useHistory, withRouter } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
@@ -14,7 +13,6 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(2),
   },
   title: {
-    flexGrow: 1,
     display: "none",
     [theme.breakpoints.up("sm")]: {
       display: "block",
@@ -51,7 +49,6 @@ function Header() {
           <Typography className={classes.title} variant="h6" noWrap>
             <div onClick={handleGotoHomepage}>Menu</div>
           </Typography>
-          <SearchBar />
         </Toolbar>
       </AppBar>
       <Sidebar open={isDrawerOpened} onClose={handleCloseDrawer} />

@@ -9,12 +9,14 @@ export const useQuery = (query = {}) => {
   const [pagination, setPagination] = useState({});
 
   useEffect(() => {
-    const params = {
-      page_number: query.pageNumber,
-      per_page: query.perPage
-    };
-
     (async function () {
+      const params = {
+        page_number: query.pageNumber,
+        per_page: query.perPage,
+      };
+      if (query.slug) {
+        params.filter = `slug:${query.slug || ``};`;
+      }
       setLoading(true);
       try {
         const res = await blogsApi.getBlogs({ params });
@@ -22,15 +24,15 @@ export const useQuery = (query = {}) => {
         setErrMessage("");
         setData(res?.data);
         setHasMore(res?.data.length > 0);
-        setPagination(res?.pagination)
+        setPagination(res?.pagination);
       } catch (err) {
         setLoading(false);
         setErrMessage(err);
         setData([]);
-        setPagination(res?.pagination)
+        setPagination({});
       }
     })();
-  }, [query.pageNumber]);
+  }, [query.pageNumber, query.slug]);
 
   return { data, loading, errMessage, hasMore, pagination };
 };

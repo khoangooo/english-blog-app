@@ -2,44 +2,6 @@
   min-height: 100vh;
 }
 
-.editor {
-  @extend .main;
-  margin-top: 20px;
-}
-
-.draft {
-  &-wrapper-class {
-    padding: 1rem;
-    border: 1px solid #ccc;
-    .title {
-      height: 150px;
-    }
-    .detail {
-      height: 500px;
-    }
-  }
-  &-editor-class {
-    background-color: lightgray;
-    padding: 1rem;
-    border: 1px solid #ccc;
-    overflow-y: scroll;
-    .title {
-      height: 10rem;
-    }
-    .detail {
-      height: 25rem;
-    }
-  }
-  &-toolbar-class {
-    border: 1px solid #ccc;
-  }
-
-  &-preview {
-    padding: 1rem;
-    margin-top: 1rem;
-  }
-}
-
 @media screen and (min-width: 768px) {
   .footer {
     padding: 0 15px 40px;
@@ -49,18 +11,6 @@
 @media screen and (max-width: 767px) {
   .footer {
     padding: 0 15px 40px;
-  }
-
-  .draft {
-    &-editor-class {
-      overflow-y: scroll;
-      .title {
-        height: 4rem;
-      }
-      .detail {
-        height: 6rem;
-      }
-    }
   }
 }
 
@@ -85,12 +35,59 @@
     background: currentColor;
     box-shadow: -10px 0 12px 3px currentColor;
     clip-path: polygon(0 5%, 100% 0, 100% 100%, 0 95%, -30px 50%);
-    animation: ct4 0.5s infinite linear;
+    animation: ct4 1s infinite linear;
   }
 
   @keyframes ct4 {
     100% {
       left: calc(100% + 20px);
+    }
+  }
+}
+
+.editor-wrapper {
+  height: 500;
+  width: 800;
+  border-radius: 5px;
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  .editor {
+    white-space: pre-wrap;
+    border-style: none;
+    border-color: transparent;
+    overflow: hidden;
+    outline: none;
+    resize: none;
+    width: 100%;
+  }
+  .title {
+    @extend .editor;
+    font-size: 3rem;
+    font-weight: 800;
+  }
+  .detail {
+    @extend .editor;
+    font-size: 1rem;
+    font-weight: 500;
+  }
+}
+
+.upload {
+  height: 56px;
+  background-color: rgba(170, 167, 167, 0.2);
+  padding-left: 64px;
+  padding-right: 64px;
+  display: flex;
+    align-items: center;
+  &-btn {
+    width: 180px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 5px 10px 5px;
+    &:hover {
+      background-color: rgba(170, 167, 167, 0.4);
     }
   }
 }
