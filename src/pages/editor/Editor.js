@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { EditorState, convertFromHTML, ContentState } from "draft-js";
 import { Editor } from "react-draft-wysiwyg";
 import { convertToHTML } from "draft-convert";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
 function EditorComponent(props) {
-  const { data, setData } = props;
+  const { data, setData, suffixClassName } = props;
 
   const [editorState, setEditorState] = useState(() => EditorState.createEmpty());
 
@@ -19,7 +19,7 @@ function EditorComponent(props) {
     setData(currentContentAsHTML);
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     const blocksFromHTML = convertFromHTML(data);
     const contentState = ContentState.createFromBlockArray(
       blocksFromHTML.contentBlocks,
@@ -33,8 +33,8 @@ function EditorComponent(props) {
       <Editor
         editorState={editorState}
         onEditorStateChange={handleEditorChange}
-        wrapperClassName="draft-wrapper-class"
-        editorClassName="draft-editor-class"
+        wrapperClassName={`draft-wrapper-class ${suffixClassName}`}
+        editorClassName={`draft-editor-class ${suffixClassName}`}
         toolbarClassName="draft-toolbar-class"
       />
     </>

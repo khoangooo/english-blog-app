@@ -1,5 +1,5 @@
-import Detail from "../components/Detail";
-import Homepage from "../components/Homepage";
+import Detail from "../pages/blogs";
+import Homepage from "../pages/homepage";
 
 const mainRoutes = [
   {

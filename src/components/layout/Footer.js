@@ -41,9 +41,9 @@ function Footer() {
           <form className={classes.footerForm}>
             <h2>Join the Newsletter</h2>
             <p>First Name</p>
-            <input type="text" placeholder="Thau" required="" />
+            <input type="text" required="" />
             <p>Last Name</p>
-            <input type="text" placeholder="Nguyen" required="" />
+            <input type="text" required="" />
             <button type="submit">Subscribe</button>
           </form>
         </div>
