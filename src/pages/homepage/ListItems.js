@@ -51,7 +51,7 @@ function ListItems(props) {
             );
           })}
         </Grid>
-        {data.length > 0 && <Grid container className={classes.pagination} justifyContent="center" spacing={6}>
+        {data?.length > 0 && <Grid container className={classes.pagination} justifyContent="center" spacing={6}>
           <Pagination
             {...newPagination}
             color="primary"
