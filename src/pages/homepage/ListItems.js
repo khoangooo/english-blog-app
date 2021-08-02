@@ -43,7 +43,7 @@ function ListItems(props) {
     <Grid container className={classes.root} spacing={2}>
       <Grid item xs={12}>
         <Grid container justifyContent="center" spacing={6}>
-          {data.map((elm) => {
+          {data?.map((elm) => {
             return (
               <Grid key={elm.id} item>
                 <Item item={elm} />
@@ -51,14 +51,14 @@ function ListItems(props) {
             );
           })}
         </Grid>
-        <Grid container className={classes.pagination} justifyContent="center" spacing={6}>
+        {data.length > 0 && <Grid container className={classes.pagination} justifyContent="center" spacing={6}>
           <Pagination
             {...newPagination}
             color="primary"
             size="large"
             onChange={handleChangePagination}
           />
-        </Grid>
+        </Grid>}
       </Grid>
     </Grid>
   );
