@@ -1,6 +1,8 @@
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Live demo at [https://english-blog-app.vercel.app](https://english-blog-app.vercel.app).
+Change the route to [https://english-blog-app.vercel.app/editor](https://english-blog-app.vercel.app/editor) to create new post.
 
 ## Available Scripts
 
@@ -10,7 +12,7 @@ In the project directory, you can run:
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-Change the route to [http://localhost:3000/editor](http://localhost:3000/edtior) to create new post.
+
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
