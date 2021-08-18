@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { Button } from "@material-ui/core";
 import { ImageOutlined } from "@material-ui/icons";
+import CoverImage from "./cover";
 
 function EditorComponent(props) {
   const { detail, setDetail, title, setTitle } = props;
@@ -12,6 +14,7 @@ function EditorComponent(props) {
 
   return (
     <div className="editor-wrapper">
+      <CoverImage />
       <div style={{ margin: "32px 64px" }}>
         <textarea
           id="title"
@@ -26,7 +29,10 @@ function EditorComponent(props) {
       <div className="upload">
         <div className="upload-btn">
           <ImageOutlined style={{ fontSize: "2rem" }} />
-          <div style={{display: "inline-block", marginLeft: 10}}><span style={{ fontSize: "1rem" }}>Upload image</span></div>
+          <div style={{ display: "inline-block", marginLeft: 10 }}>
+            <label htmlFor="upload-image" style={{ fontSize: "1rem", cursor: "pointer" }}>Upload image</label>
+            <input id="upload-image" type="file" className="cover-img-input" accept="image/*" />
+          </div>
         </div>
       </div>
       <div style={{ margin: "32px 64px" }}>
